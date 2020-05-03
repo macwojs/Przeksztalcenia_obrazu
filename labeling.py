@@ -9,6 +9,9 @@ def labeling(filename):
     white = 255
     black = 0
 
+    # zmiana na obraz 255 a nie bit
+    pix[pix > 0] = white
+
     num_rows = pix.shape[0]
     num_cols = pix.shape[1]
 
@@ -47,10 +50,11 @@ def labeling(filename):
             else:
                 output[row][cell] = pixel
 
-    new_image = Image.fromarray(output)
-    new_image.save('new.png')
 
-    # tworzenie obrazu do
+    # new_image = Image.fromarray(output)
+    # new_image.save('new.png')
+
+    # tworzenie obrazu do scalenia
     output2 = output
 
     for row in range(num_rows - 1, -1, -1):
@@ -73,4 +77,6 @@ def labeling(filename):
                     output2[output2 == right] = pixel
 
     new_image2 = Image.fromarray(output2)
-    new_image2.save('new2.png')
+    #new_image2.save('new2.png')
+
+    return new_image2
