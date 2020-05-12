@@ -3,6 +3,8 @@ from tkinter.filedialog import askopenfilename
 
 from labeling import labeling
 from ordfilt2 import ordfilt2
+from regionprops_cent import regionprops_cent
+from PIL import Image
 import os
 ################LABELING
 Tk().withdraw()
@@ -26,3 +28,11 @@ n = int(input())
 im_ordfilt = ordfilt2(filename2, m_x, m_y, n)
 file_name = '%s_ordfil.png' % (os.path.basename(filename2).split(".")[0])
 im_ordfilt.save(file_name)
+
+
+#################REGIONPROPS
+im = Image.open("text.png")
+im_prop_cent = regionprops_cent(im)
+#regionprops_cent(im_labeled)
+
+
