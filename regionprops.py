@@ -25,7 +25,7 @@ def regionprops_cent(image):
         output[i, 2] = output[i, 2] / length + 1
         i = i + 1
 
-    print(unique)
+    return output
 
 
 def regionprops_equiv_diam(image):
@@ -50,4 +50,4 @@ def regionprops_equiv_diam(image):
     for i in range(len(unique)):
         output[i, 1] = sqrt(area[i]) * factor
 
-    print(unique)
+    return output

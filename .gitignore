@@ -5,3 +5,6 @@
 __pycache__/
 
 MATLAb/
+/logic_image_labeled_prop_centroid.txt
+
+*.txt
