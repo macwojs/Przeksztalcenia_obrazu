@@ -4,6 +4,7 @@ from tkinter.filedialog import askopenfilename
 from labeling import labeling
 from ordfilt2 import ordfilt2
 from regionprops_cent import regionprops_cent
+from regionprops_cent import regionprops_equiv_diam
 from PIL import Image
 import os
 ################LABELING
@@ -31,8 +32,9 @@ im_ordfilt.save(file_name)
 
 
 #################REGIONPROPS
-im = Image.open("text.png")
+im = Image.open("logic_image_labeled.png")
 im_prop_cent = regionprops_cent(im)
+im_prop_cent = regionprops_equiv_diam(im)
 #regionprops_cent(im_labeled)
 
 
