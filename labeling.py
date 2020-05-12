@@ -16,16 +16,17 @@ def labeling(filename):
     num_cols = pix.shape[1]
 
     # Tworzenie obrazu wyjściowego
-    output = [[white for y in range(num_rows)]
-              for x in range(num_cols)]
-    output = np.array(output, np.uint8)
+    output = [[white for y in range(num_cols)]
+              for x in range(num_rows)]
+    # output = np.array(output, np.uint8)
+    output = np.array(output)
 
     # Ilosc mozliwych do rozpoznania obiektow (nalezy podzielic przez 3)
-    obj_number = 240
+    obj_number = 254
 
     # labeling
-    for row in range(num_rows):
-        for cell in range(num_cols):
+    for row in range(num_rows - 1):
+        for cell in range(num_cols - 1):
             pixel = pix[row][cell]
             if pixel != white:
                 above = white
@@ -46,10 +47,11 @@ def labeling(filename):
                     output[row][cell] = output[row - 1][cell]
                 else:
                     output[row][cell] = obj_number
-                    obj_number = obj_number - 3
+                    obj_number = obj_number - 1
+                    if obj_number == 0:
+                        obj_number = -1
             else:
                 output[row][cell] = pixel
-
 
     # new_image = Image.fromarray(output)
     # new_image.save('new.png')
@@ -76,7 +78,21 @@ def labeling(filename):
                 if right != white:
                     output2[output2 == right] = pixel
 
+    # zmienia wartosci z ujemnych
+    # próbuje nawet jak nie wystepuja
+    #TODO mozna to zrobic optymalniej
+    unique = np.unique(output2)
+    touse = np.arange(1, 254)
+    for u in unique:
+        touse = touse[touse != u]
+    iter = 0
+    for u in unique:
+        if u < 0:
+            output2[output2 == u] = touse[iter]
+            iter = iter + 1
+
+    output2 = np.array(output2, np.uint8)
     new_image2 = Image.fromarray(output2)
-    #new_image2.save('new2.png')
+    # new_image2.save('new2.png')
 
     return new_image2
