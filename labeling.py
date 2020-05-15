@@ -80,7 +80,7 @@ def labeling(filename):
 
     # zmienia wartosci z ujemnych
     # próbuje nawet jak nie wystepuja
-    #TODO mozna to zrobic optymalniej
+    # TODO mozna to zrobic optymalniej
     unique = np.unique(output2)
     touse = np.arange(1, 254)
     for u in unique:

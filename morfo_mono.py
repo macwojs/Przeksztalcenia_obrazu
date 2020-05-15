@@ -1,6 +1,7 @@
-from strel import strel_line
-from PIL import Image
 import numpy as np
+from PIL import Image
+
+from strel import strel_line
 
 
 def find_ero(mask, cut):
@@ -11,6 +12,7 @@ def find_ero(mask, cut):
                 output = np.append(output, [cut[row, col]])
     return output
 
+
 def find_dil(mask, cut):
     output = np.array([0])
     for row in range(mask.shape[0]):
@@ -19,20 +21,16 @@ def find_dil(mask, cut):
                 output = np.append(output, [cut[row, col]])
     return output
 
+
 def erode_mono(im, len, deg):
     strel = strel_line(len, deg)
 
-    # strel = np.ones((3, 3))
     strel_row_around = strel.shape[0] - 1
     strel_col_around = strel.shape[1] - 1
     strel_row_one_side = int(strel_row_around / 2)
     strel_col_one_side = int(strel_col_around / 2)
 
-    # # image = np.ones((13, 15))
-    # # image[1, 7] = 0
-    # image = Image.open(im)
     image = np.array(im)
-    # image[image > 0] = 1
 
     # powiększenie rozszerzenie obrazu o zera
     image_big = np.ones((image.shape[0] + strel_row_around, image.shape[1] + strel_col_around))
@@ -50,34 +48,25 @@ def erode_mono(im, len, deg):
             values = find_ero(strel, image_cut)
             image_out[row - strel_row_one_side, col - strel_col_one_side] = np.amin(values)
 
-    # im = Image.open("logic_image.png")
-    # pix = np.array(im)
-    # pix[pix > 0] = 1 # zmiana na obraz binarny
-
-    # image_out[image_out > 0] = 255
     image_out = np.array(image_out, np.uint8)
     new_image = Image.fromarray(image_out)
     new_image.save("images/new2.png")
     return new_image
 
+
 def dilate_mono(im, len, deg):
     strel = strel_line(len, deg)
 
-    # strel = np.ones((3, 3))
     strel_row_around = strel.shape[0] - 1
     strel_col_around = strel.shape[1] - 1
     strel_row_one_side = int(strel_row_around / 2)
     strel_col_one_side = int(strel_col_around / 2)
 
-    # # image = np.ones((13, 15))
-    # # image[1, 7] = 0
-    # image = Image.open(im)
     image = np.array(im)
-    # image[image > 0] = 1
 
     # powiększenie rozszerzenie obrazu o zera
     image_big = np.zeros((image.shape[0] + strel_row_around, image.shape[1] + strel_col_around))
-    #image_big[image_big > 0] = 0
+    # image_big[image_big > 0] = 0
     image_big[strel_row_one_side:image.shape[0] + strel_row_one_side,
     strel_col_one_side:image.shape[1] + strel_col_one_side] = image
 
@@ -91,16 +80,7 @@ def dilate_mono(im, len, deg):
             values = find_dil(strel, image_cut)
             image_out[row - strel_row_one_side, col - strel_col_one_side] = np.amax(values)
 
-    # im = Image.open("logic_image.png")
-    # pix = np.array(im)
-    # pix[pix > 0] = 1 # zmiana na obraz binarny
-
-    # image_out[image_out > 0] = 255
     image_out = np.array(image_out, np.uint8)
     new_image = Image.fromarray(image_out)
     new_image.save("images/new3.png")
     return new_image
-
-ime = Image.open("images/cameraman.tif")
-image_dil = erode_mono(ime, 12, 120)
-image_ero = dilate_mono(ime, 12, 120)

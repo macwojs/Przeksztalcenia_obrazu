@@ -1,9 +1,10 @@
-from morfo_mono import dilate_mono
-from morfo_mono import erode_mono
-from morfo_logic import dilate_logic
-from morfo_logic import erode_logic
 from PIL import Image
 from numpy import unique, array
+
+from morfo_logic import dilate_logic
+from morfo_logic import erode_logic
+from morfo_mono import dilate_mono
+from morfo_mono import erode_mono
 
 
 def close(filename, len, deg):
@@ -19,5 +20,3 @@ def close(filename, len, deg):
         print("a")
 
     return out
-
-im_close_logic = close("images/ship_bin.tif", 3, 45)

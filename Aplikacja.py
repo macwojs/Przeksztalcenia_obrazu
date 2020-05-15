@@ -1,14 +1,15 @@
+import os
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 
+import numpy as np
+from PIL import Image
+
+from close import close
 from labeling import labeling
 from ordfilt2 import ordfilt2
 from regionprops import regionprops_cent
 from regionprops import regionprops_equiv_diam
-from PIL import Image
-import numpy as np
-import os
-from close import close
 
 ################LABELING
 Tk().withdraw()
@@ -51,4 +52,3 @@ file_name = 'images/%s_close.tif' % (os.path.basename("images/ship_bin.tif").spl
 im_close_logic.save(file_name)
 file_name = 'images/%s_close.tif' % (os.path.basename("images/cameraman.tif").split(".")[0])
 im_close_mono.save(file_name)
-
