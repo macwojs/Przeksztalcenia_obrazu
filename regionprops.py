@@ -1,7 +1,7 @@
-import numpy as np
-from PIL import Image
-from math import sqrt
 from math import pi
+from math import sqrt
+
+import numpy as np
 
 
 def regionprops_cent(image):
@@ -45,7 +45,7 @@ def regionprops_equiv_diam(image):
         area[i] = where.size / 2
         i = i + 1
 
-    factor = 2/sqrt(pi)
+    factor = 2 / sqrt(pi)
 
     for i in range(len(unique)):
         output[i, 1] = sqrt(area[i]) * factor
