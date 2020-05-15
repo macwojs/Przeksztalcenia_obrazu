@@ -33,7 +33,7 @@ file_name = '%s_ordfil.png' % (os.path.basename(filename2).split(".")[0])
 im_ordfilt.save(file_name)
 
 #################REGIONPROPS
-im = Image.open("logic_image_labeled.png")
+im = Image.open("images/logic_image_labeled.png")
 
 im_prop_cent = regionprops_cent(im)
 file_name = '%s_prop_centroid.txt' % (os.path.basename(filename1).split(".")[0])
