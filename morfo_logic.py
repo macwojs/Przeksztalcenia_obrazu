@@ -107,6 +107,7 @@ def erode_logic(im, len, deg):
     new_image.save("images/new3.png")
     return new_image
 
+
 ime = Image.open("images/ship_bin.tif")
 image_dil = dilate_logic(ime, 12, 120)
 image_dil.save("images/new4.png")
