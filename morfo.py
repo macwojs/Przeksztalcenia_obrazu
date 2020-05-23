@@ -44,7 +44,6 @@ def erode(im, len, deg):
         image_out[image_out > 0] = 255
     image_out = np.array(image_out, np.uint8)
     new_image = Image.fromarray(image_out)
-    new_image.save("images/new2.png")
     return new_image
 
 
@@ -78,5 +77,4 @@ def dilate(im, len, deg):
         image_out[image_out > 0] = 255
     image_out = np.array(image_out, np.uint8)
     new_image = Image.fromarray(image_out)
-    new_image.save("images/new3.png")
     return new_image

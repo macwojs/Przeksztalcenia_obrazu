@@ -54,7 +54,5 @@ def ordfilt2mono(im, x, y, n):
             mask_sorted = np.sort(mask, axis=None)
             output[row][col] = mask_sorted[nr - 1]
 
-    # output = output.transpose()
     new_image = Image.fromarray(output)
-    # new_image.show()
     return new_image

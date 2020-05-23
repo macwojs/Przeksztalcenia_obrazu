@@ -18,7 +18,6 @@ def labeling(filename):
     # Tworzenie obrazu wyjściowego
     output = [[white for y in range(num_cols)]
               for x in range(num_rows)]
-    # output = np.array(output, np.uint8)
     output = np.array(output)
 
     # Ilosc mozliwych do rozpoznania obiektow (nalezy podzielic przez 3)
@@ -53,9 +52,6 @@ def labeling(filename):
             else:
                 output[row][cell] = pixel
 
-    # new_image = Image.fromarray(output)
-    # new_image.save('new.png')
-
     # tworzenie obrazu do scalenia
     output2 = output
 
@@ -79,8 +75,6 @@ def labeling(filename):
                     output2[output2 == right] = pixel
 
     # zmienia wartosci z ujemnych
-    # próbuje nawet jak nie wystepuja
-    # TODO mozna to zrobic optymalniej
     unique = np.unique(output2)
     touse = np.arange(1, 254)
     for u in unique:
@@ -93,6 +87,5 @@ def labeling(filename):
 
     output2 = np.array(output2, np.uint8)
     new_image2 = Image.fromarray(output2)
-    # new_image2.save('new2.png')
 
     return new_image2
