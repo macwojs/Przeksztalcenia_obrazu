@@ -52,7 +52,6 @@ im_close = close(file_name_close, len, deg)
 file_name = 'result/%s_close.tif' % (os.path.basename(file_name_close).split(".")[0])
 im_close.save(file_name)
 
-
 ################LABELING
 Tk().withdraw()
 file_name_labeling = askopenfilename()
