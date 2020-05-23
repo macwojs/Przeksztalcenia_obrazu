@@ -43,7 +43,6 @@ def regionprops_equiv_diam(image):
     for i in range(len(unique)):
         where = np.argwhere(pix == unique[i])
         area[i] = where.size / 2
-        i = i + 1
 
     factor = 2 / sqrt(pi)
 
