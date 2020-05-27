@@ -5,8 +5,5 @@
 __pycache__/
 
 MATLAb/
-/images/logic_image_labeled_prop_centroid.txt
+result/
 
-*.txt
-
-*.tif
