@@ -12,6 +12,7 @@ from regionprops import regionprops_cent
 from regionprops import regionprops_equiv_diam
 
 #################REGIONPROPS
+print("Wykonywanie funkcji regioprops")
 Tk().withdraw()
 file_name_regionprops = askopenfilename()
 
@@ -26,6 +27,7 @@ file_name = 'result/%s_prop_equiv_diam.txt' % (os.path.basename(file_name_region
 np.savetxt(file_name, im_prop_equiv_diam, fmt='%1.6g')
 
 # # ###############ORDFILT
+print("Wykonywanie funkcji ordfilt")
 Tk().withdraw()
 file_name_ordfilt = askopenfilename()
 
@@ -41,6 +43,7 @@ file_name = 'result/%s_ordfil.png' % (os.path.basename(file_name_ordfilt).split(
 im_ordfilt.save(file_name)
 
 #################CLOSE
+print("Wykonywanie funkcji zamknięcia")
 Tk().withdraw()
 file_name_close = askopenfilename()
 print('Podaj dlugosc linii')
@@ -53,6 +56,7 @@ file_name = 'result/%s_close.tif' % (os.path.basename(file_name_close).split("."
 im_close.save(file_name)
 
 # ################LABELING
+print("Wykonywanie funkcji etykietującej")
 Tk().withdraw()
 file_name_labeling = askopenfilename()
 
